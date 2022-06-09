@@ -36,3 +36,4 @@ if [ "$1" = "nginx" -o "$1" = "nginx-debug" ]; then
 fi
 
 exec "$@ && /auto-reload-nginx.sh"
+exec "/auto-reload-nginx.sh"

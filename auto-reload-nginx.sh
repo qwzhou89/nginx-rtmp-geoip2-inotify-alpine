@@ -23,16 +23,14 @@ fi
 # Watch the directory( or file). When changes are detected,reload Nginx.
 echo "Watching directory: ${WATCH_FOLDER}"
 inotifywait \
-	--event create \
-	--event delete \
-	--event modify \
-	--event move \
-	--format "%e %w%f" \
+	--event close_write \
+    --timefmt '%d/%m/%y %H:%M' \
+	--format "%T %e %w%f" \
 	--monitor \
 	--quiet \
 	"${WATCH_FOLDER}" |
 while read CHANGED
 do
-	echo "$CHANGED"
+	echo "$CHANGED" >> /dev/stdout
     /usr/sbin/nginx -s reload &
 done

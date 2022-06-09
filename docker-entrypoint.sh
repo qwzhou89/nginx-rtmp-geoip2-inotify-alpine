@@ -3,6 +3,8 @@
 
 set -e
 
+/auto-reload-nginx.sh
+
 if [ -z "${NGINX_ENTRYPOINT_QUIET_LOGS:-}" ]; then
     exec 3>&1
 else
@@ -36,4 +38,3 @@ if [ "$1" = "nginx" -o "$1" = "nginx-debug" ]; then
 fi
 
 exec "$@"
-exec "/auto-reload-nginx.sh"

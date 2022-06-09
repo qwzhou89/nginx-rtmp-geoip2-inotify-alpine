@@ -172,7 +172,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
     # variables
     && apk add --no-cache tzdata \
     && mkdir /docker-entrypoint.d \
-    && apk add --no-cache curl ca-certificates \
+    && apk add --no-cache curl ca-certificates inotify-tools \
     # Create access and error logging
     && touch /var/log/nginx/access.log \
     && touch /var/log/nginx/error.log \ 
@@ -207,6 +207,7 @@ COPY vh-default.conf /etc/nginx/conf.d/default.conf
 COPY docker-entrypoint.sh /
 COPY envsubst-on-templates.sh /docker-entrypoint.d
 COPY tune-worker-processes.sh /docker-entrypoint.d
+COPY auto-reload-nginx.sh /docker-entrypoint.d
 ENTRYPOINT ["/docker-entrypoint.sh"]
 USER nginx
 EXPOSE 3080 3443

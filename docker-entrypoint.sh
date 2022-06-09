@@ -3,7 +3,7 @@
 
 set -e
 
-/auto-reload-nginx.sh
+/auto-reload-nginx.sh &
 
 if [ -z "${NGINX_ENTRYPOINT_QUIET_LOGS:-}" ]; then
     exec 3>&1

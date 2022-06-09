@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+exec 1>/dev/stdout
+exec 2>/dev/stdout
+
+set -e
+
 WATCH_FOLDER="${WATCH_FOLDER:-/etc/nginx/conf.d}"
 
 # Abort, if already running.
@@ -31,6 +36,6 @@ inotifywait \
 	"${WATCH_FOLDER}" |
 while read CHANGED
 do
-	echo "$CHANGED" >> /dev/stdout
-    /usr/sbin/nginx -s reload &
+	echo "$CHANGED"
+    nginx -s reload
 done

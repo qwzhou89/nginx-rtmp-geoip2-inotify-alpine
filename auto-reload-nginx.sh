@@ -15,8 +15,6 @@
 exec 1>/dev/stdout
 exec 2>/dev/stdout
 
-set -e
-
 WATCH_FOLDER="${WATCH_FOLDER:-/etc/nginx/conf.d}"
 
 # Abort, if already running.

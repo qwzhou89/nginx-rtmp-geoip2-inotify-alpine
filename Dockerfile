@@ -207,7 +207,7 @@ COPY vh-default.conf /etc/nginx/conf.d/default.conf
 COPY docker-entrypoint.sh /
 COPY envsubst-on-templates.sh /docker-entrypoint.d
 COPY tune-worker-processes.sh /docker-entrypoint.d
-COPY auto-reload-nginx.sh /docker-entrypoint.d
+COPY auto-reload-nginx.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 USER nginx
 EXPOSE 3080 3443

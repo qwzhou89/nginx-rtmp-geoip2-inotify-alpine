@@ -13,7 +13,7 @@
 # limitations under the License.
 
 exec 1>/tmp/reload.log
-exec 2>/dev/reload.log
+exec 2>/tmp/reload.log
 
 WATCH_FOLDER="${WATCH_FOLDER:-/etc/nginx/conf.d}"
 

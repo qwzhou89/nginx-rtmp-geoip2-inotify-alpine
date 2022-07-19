@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-exec 1>/dev/stdout
-exec 2>/dev/stdout
+exec 1>/tmp/reload.log
+exec 2>/dev/reload.log
 
 WATCH_FOLDER="${WATCH_FOLDER:-/etc/nginx/conf.d}"
 
@@ -34,6 +34,6 @@ inotifywait \
 	"${WATCH_FOLDER}" |
 while read CHANGED
 do
-	echo "$CHANGED"
+	echo "$CHANGED"@`date`
     nginx -s reload
 done
